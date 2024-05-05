@@ -1,8 +1,8 @@
 <?php 
 
 $servername = "localhost";
-$username = "mf2badmin_devadmin";
-$password = "Dev@2024!";
+$username = "root";
+$password = "Numolo@12345";
 $db = "mf2badmin_devn";
 
 // Create connection
