@@ -1,0 +1,6 @@
+.activeQuestion{
+    width: 2px; height:2px; color:green; 
+}
+.deactivateQuestion{
+    width: 2px; height:2px; color:rgb(239, 19, 30);
+}

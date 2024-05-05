@@ -1,0 +1,23 @@
+<?php 
+
+$servername = "localhost";
+$username = "mf2badmin_devadmin";
+$password = "Dev@2024!";
+$db = "mf2badmin_devn";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $db);
+
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
+//echo "Connected successfully";
+
+// Purchase Code 
+//$pur_code = "xxxxx-xxxxxxxxxx-xxxxxxxxxx";
+$pur_code = "6f29d56f-1cb4-4a70-baf2-072aed7aaefb";
+
+
+?>
