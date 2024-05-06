@@ -15,7 +15,7 @@ $upQueryAccRes = $upQueryAcc->fetch_assoc();
 
 if(isset($_POST['btnSave']))
 {
-	if($upQueryAccRes['livecontest']==0)
+	if($upQueryAccRes['livecontest'] >=0)
   	{
   		$totPrizepool = $conn->query("select count(id) as totPP from prizepool_master where fees_id=$fid");
   		$totPrizepoolRes = $totPrizepool->fetch_assoc();
@@ -64,7 +64,7 @@ if(isset($_GET['fid']) && isset($_GET['uid']))
 
 	if(isset($_POST['btnUpdate']))
 	{
-		if($upQueryAccRes['livecontest']==0)
+		if($upQueryAccRes['livecontest'] >=0)
 	  	{
 			$txtRank= htmlspecialchars(mysqli_real_escape_string($conn,$_POST['txtRank']), ENT_QUOTES, 'UTF-8');
 			$txtPrize= htmlspecialchars(mysqli_real_escape_string($conn,$_POST['txtPrize']), ENT_QUOTES, 'UTF-8');
