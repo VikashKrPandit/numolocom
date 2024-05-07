@@ -6,7 +6,7 @@
       $questionId=  htmlspecialchars(mysqli_real_escape_string($conn,$_POST['questionId']), ENT_QUOTES, 'UTF-8');
       $answer_key=  htmlspecialchars(mysqli_real_escape_string($conn,$_POST['ans_key']), ENT_QUOTES, 'UTF-8');
 
-      if($conn->query("update fees_master set answer_key='$answer_key' where id='$questionId'")){
+      if($conn->query("update fees_master set answer_key='$answer_key' where id='$questionId' OR parent_id='$questionId'")){
         $response['status']=200;
         return json_encode($response);
       }     

@@ -2,8 +2,8 @@
 include('include/security.php');
 
 //$getConQuery   = $conn->query("select c.id, start_time, end_time, c.status, c.fee_id,c.pkg_id, COUNT(p.id) as totParti  from tbl_contest as c left join tbl_participants as p on p.contest_id=c.id group by c.id order by c.id desc");
-$getConQuery   = $conn->query("select c.id, start_time, end_time, c.status, c.fee_id,c.pkg_id, fm.id as fmid,fm.price,fm.no_of_tickets, COUNT(p.id) as totParti  from tbl_contest as c left join tbl_participants as p on p.contest_id=c.id left join fees_master fm on fm.id =c.fee_id group by c.id order by c.id desc");
-
+//$getConQuery   = $conn->query("select c.id, start_time, end_time, c.status, c.fee_id,c.pkg_id, fm.id as fmid,fm.price,fm.no_of_tickets, COUNT(p.id) as totParti  from tbl_contest as c left join tbl_participants as p on p.contest_id=c.id left join fees_master fm on fm.id =c.fee_id group by c.id order by c.id desc");
+$getConQuery   = $conn->query("select c.id, start_time, end_time, c.status, c.fee_id,c.pkg_id, fm.question as fmquestion,fm.price as fmprice,fm.no_of_tickets as fmnutickets,fm.id as fmid,fm.price,fm.no_of_tickets, COUNT(p.id) as totParti  from tbl_contest as c left join tbl_participants as p on p.contest_id=c.id left join fees_master fm on fm.id =c.fee_id group by c.id order by c.id desc");
 $getPkg   = $conn->query("select id,pkg_name from tbl_packages where pkg_status!=2");
 $getFeemaster = $conn->query("SELECT id,question FROM fees_master where status!=2 and contest_id=0");
 $getFeemastrContst = $conn->query("SELECT fm.id,fm.price,fm.pkg_id ,ts.id,ts.fee_id,ts.pkg_id FROM fees_master fm  left join tbl_contest ts on fm.id=ts.fee_id where fm.status!=2 and ts.status=2");
@@ -551,6 +551,9 @@ if(isset($_POST['btnAddDparti']))
 															<th>ID</th>
 															<th>Start Date</th>
 											                <th>End Date</th>
+															<th>Question</th>
+											                <th>Entry</th>
+											                <th>No.Entry</th>
 											                <th>Participants</th>
 											                <th>Status</th>
 											                <th>Action</th>
@@ -562,6 +565,9 @@ if(isset($_POST['btnAddDparti']))
 											        		<td><?php echo $selres['id']; ?></td>
 											        		<td><?php echo date('d-m-Y H:i:s', $selres['start_time']); ?></td>
 											        		<td><?php echo date('d-m-Y H:i:s', $selres['end_time']); ?></td>
+															<td><?php echo  $selres['fmquestion'] ?></td>
+											        		<td><?php echo  $selres['fmprice'] ?></td>
+											        		<td><?php echo  $selres['fmnutickets'] ?></td>
 											        		<td><a href="participants-list?contestId=<?php echo $selres['id']; ?>"><?php echo $selres['totParti']; ?></a></td>
 											        		<td>
 											        			<?php if($selres['status']==1) { ?>
