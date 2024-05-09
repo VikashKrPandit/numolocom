@@ -143,6 +143,12 @@ if(isset($_GET['aid']))
 								
 								<div class="row">
 									<div class="col-lg-12">
+									   <div class="col-lg-3 mb-2">
+    									<form action="" method="post">
+    									<label>Download Csv</label>
+    		  							<a href="csv1.php" target="_blank" class="btn btn-success">Download</a>
+    									  </form>
+							        	</div>
 										<div class="card card-custom">
 											<div class="card-body">
 												<div class="table-responsive">
@@ -242,3 +248,5 @@ if(isset($_GET['aid']))
 	</body>
 	<!--end::Body-->
 </html>
+
+

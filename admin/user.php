@@ -130,6 +130,7 @@ if(isset($_GET['aid']))
 											                <th>Status</th>
 											                <th>Bank Status</th>
 											                <th>Action</th>
+															<th>Wonprize/Bonus</th>
 											            </tr>
 											        </thead>
 											    </table>
@@ -144,6 +145,7 @@ if(isset($_GET['aid']))
 						</div>
 						<!--end::Entry-->
 					</div>
+
 					<!--end::Content-->
 					<!--begin::Footer-->
 					<?php include('include/footer.php'); ?>
@@ -180,11 +182,15 @@ if(isset($_GET['aid']))
 					                 }, "data": null, "targets": [10]},{"render": function ( data, type, full, meta ) {
 					                     var buttonID = full[1];
 					                     return '<a href="user-activity?usrid='+buttonID+'" class="mr-5"><i class="fas fa-external-link-alt"></i></a>';
-					                 }, "data": null, "targets": [11]}],
+					                 }, "data": null, "targets": [11]},{"render": function ( data, type, full, meta ) {
+					                     var buttonID = full[0];
+					                     return '<a href="user_won_bonus_update.php?usrid='+buttonID+'" class="mr-5" title="Won/Bouns + -"><i class="fas fa-external-link-alt"></i></a>';
+					                 }, "data": null, "targets": [12]}
+									],
 						    } );
 						} );
 				    </script>
-		<!--end::Page Scripts-->
+
 	</body>
 	<!--end::Body-->
 </html>
