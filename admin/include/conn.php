@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "Numolo@12345";
-$db = "mf2badmin_devn";
+$db = "numolo";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $db);
