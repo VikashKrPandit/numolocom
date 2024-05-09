@@ -16,6 +16,7 @@ if(isset($_POST['btnUpdate']))
 	$txtMntnc= htmlspecialchars(mysqli_real_escape_string($conn,$_POST['txtMntnc']), ENT_QUOTES, 'UTF-8');
 	$txtPMid= htmlspecialchars(mysqli_real_escape_string($conn,$_POST['txtPMid']), ENT_QUOTES, 'UTF-8');
 	$txtPMkey= htmlspecialchars(mysqli_real_escape_string($conn,$_POST['txtPMkey']), ENT_QUOTES, 'UTF-8');
+	$bonus_on_recharge= htmlspecialchars(mysqli_real_escape_string($conn,$_POST['bonus_on_recharge']), ENT_QUOTES, 'UTF-8');
 	
 	$upi= $_POST['upi'];
 	$upi_mc= $_POST['upi_mc'];
@@ -119,13 +120,13 @@ if(isset($_POST['btnUpdate']))
 
     // onesignal 
    	// onesignal_app_user='$txtUappId', onesignal_rest_user='$txtUrest', onesignal_app_rider='$txtRAppId', onesignal_rest_rider='$txtRrest',
-	$sql = "update tbl_app_details set app_name='$txtAppName', logo='$txtLogo', favicon='$txtFavicon', app_url='$txtAppUrl', currency_code='$txtCurrencyCode', currency_sign='$txtCurrencySign', time_zone='$txtTimezone', razorpay_api_key='$txtRAkey', paytm_mer_id='$txtPMid', paytm_mer_key='$txtPMkey', fcm_key='$txtGfcm', maintenance_mode='$txtMntnc', upi='$upi', upi_mc='$upi_mc', upi_tn='$upi_tn', upi_pn='$upi_pn', upi_token='$upi_token', wallet_mode='$txtWmode', min_withdraw='$txtMinWith', max_withdraw='$txtMaxWith', min_deposit='$txtMinDepo', max_deposit='$txtMaxDepo', mop='$txtMpayment', country_code='$txtCountryCode', share_prize='$txtSprize', download_prize='$txtDprize', bonus_used='$txtBonusUsed', tawkto_chat_link='$tawkto_chat_link' where id=1";
+	$sql = "update tbl_app_details set app_name='$txtAppName', logo='$txtLogo', favicon='$txtFavicon', app_url='$txtAppUrl', currency_code='$txtCurrencyCode', currency_sign='$txtCurrencySign', time_zone='$txtTimezone', razorpay_api_key='$txtRAkey', paytm_mer_id='$txtPMid', paytm_mer_key='$txtPMkey', fcm_key='$txtGfcm', maintenance_mode='$txtMntnc', upi='$upi', upi_mc='$upi_mc', upi_tn='$upi_tn', upi_pn='$upi_pn', upi_token='$upi_token', wallet_mode='$txtWmode', min_withdraw='$txtMinWith', max_withdraw='$txtMaxWith', min_deposit='$txtMinDepo', max_deposit='$txtMaxDepo', mop='$txtMpayment', country_code='$txtCountryCode', share_prize='$txtSprize', download_prize='$txtDprize', bonus_used='$txtBonusUsed', tawkto_chat_link='$tawkto_chat_link' bonus_on_recharge='$bonus_on_recharge' where id=1";
 	} else if(!empty($_FILES['txtLogo']['name'])){
-	$sql = "update tbl_app_details set app_name='$txtAppName', logo='$txtLogo', app_url='$txtAppUrl', currency_code='$txtCurrencyCode', currency_sign='$txtCurrencySign', time_zone='$txtTimezone', razorpay_api_key='$txtRAkey', paytm_mer_id='$txtPMid', paytm_mer_key='$txtPMkey', fcm_key='$txtGfcm', maintenance_mode='$txtMntnc', upi='$upi', upi_mc='$upi_mc', upi_tn='$upi_tn', upi_pn='$upi_pn', upi_token='$upi_token', wallet_mode='$txtWmode', min_withdraw='$txtMinWith', max_withdraw='$txtMaxWith', min_deposit='$txtMinDepo', max_deposit='$txtMaxDepo', mop='$txtMpayment', country_code='$txtCountryCode', share_prize='$txtSprize', download_prize='$txtDprize', bonus_used='$txtBonusUsed', tawkto_chat_link='$tawkto_chat_link' where id=1";
+	$sql = "update tbl_app_details set app_name='$txtAppName', logo='$txtLogo', app_url='$txtAppUrl', currency_code='$txtCurrencyCode', currency_sign='$txtCurrencySign', time_zone='$txtTimezone', razorpay_api_key='$txtRAkey', paytm_mer_id='$txtPMid', paytm_mer_key='$txtPMkey', fcm_key='$txtGfcm', maintenance_mode='$txtMntnc', upi='$upi', upi_mc='$upi_mc', upi_tn='$upi_tn', upi_pn='$upi_pn', upi_token='$upi_token', wallet_mode='$txtWmode', min_withdraw='$txtMinWith', max_withdraw='$txtMaxWith', min_deposit='$txtMinDepo', max_deposit='$txtMaxDepo', mop='$txtMpayment', country_code='$txtCountryCode', share_prize='$txtSprize', download_prize='$txtDprize', bonus_used='$txtBonusUsed', tawkto_chat_link='$tawkto_chat_link' bonus_on_recharge='$bonus_on_recharge' where id=1";
 	} else if(!empty($_FILES['txtFavicon']['name'])){
-	$sql = "update tbl_app_details set app_name='$txtAppName', favicon='$txtFavicon', app_url='$txtAppUrl', currency_code='$txtCurrencyCode', currency_sign='$txtCurrencySign', time_zone='$txtTimezone', razorpay_api_key='$txtRAkey', paytm_mer_id='$txtPMid', paytm_mer_key='$txtPMkey', fcm_key='$txtGfcm', maintenance_mode='$txtMntnc', upi='$upi', upi_mc='$upi_mc', upi_tn='$upi_tn', upi_pn='$upi_pn', upi_token='$upi_token', wallet_mode='$txtWmode', min_withdraw='$txtMinWith', max_withdraw='$txtMaxWith', min_deposit='$txtMinDepo', max_deposit='$txtMaxDepo', mop='$txtMpayment', country_code='$txtCountryCode', share_prize='$txtSprize', download_prize='$txtDprize', bonus_used='$txtBonusUsed', tawkto_chat_link='$tawkto_chat_link' where id=1";
+	$sql = "update tbl_app_details set app_name='$txtAppName', favicon='$txtFavicon', app_url='$txtAppUrl', currency_code='$txtCurrencyCode', currency_sign='$txtCurrencySign', time_zone='$txtTimezone', razorpay_api_key='$txtRAkey', paytm_mer_id='$txtPMid', paytm_mer_key='$txtPMkey', fcm_key='$txtGfcm', maintenance_mode='$txtMntnc', upi='$upi', upi_mc='$upi_mc', upi_tn='$upi_tn', upi_pn='$upi_pn', upi_token='$upi_token', wallet_mode='$txtWmode', min_withdraw='$txtMinWith', max_withdraw='$txtMaxWith', min_deposit='$txtMinDepo', max_deposit='$txtMaxDepo', mop='$txtMpayment', country_code='$txtCountryCode', share_prize='$txtSprize', download_prize='$txtDprize', bonus_used='$txtBonusUsed', tawkto_chat_link='$tawkto_chat_link' bonus_on_recharge='$bonus_on_recharge' where id=1";
 	} else{
-	$sql = "update tbl_app_details set app_name='$txtAppName', app_url='$txtAppUrl', currency_code='$txtCurrencyCode', currency_sign='$txtCurrencySign', time_zone='$txtTimezone', razorpay_api_key='$txtRAkey', paytm_mer_id='$txtPMid', paytm_mer_key='$txtPMkey', fcm_key='$txtGfcm', maintenance_mode='$txtMntnc', upi='$upi', upi_mc='$upi_mc', upi_tn='$upi_tn', upi_pn='$upi_pn', upi_token='$upi_token', wallet_mode='$txtWmode', min_withdraw='$txtMinWith', max_withdraw='$txtMaxWith', min_deposit='$txtMinDepo', max_deposit='$txtMaxDepo', mop='$txtMpayment', country_code='$txtCountryCode', share_prize='$txtSprize', download_prize='$txtDprize', bonus_used='$txtBonusUsed', tawkto_chat_link='$tawkto_chat_link' where id=1";
+	$sql = "update tbl_app_details set app_name='$txtAppName', app_url='$txtAppUrl', currency_code='$txtCurrencyCode', currency_sign='$txtCurrencySign', time_zone='$txtTimezone', razorpay_api_key='$txtRAkey', paytm_mer_id='$txtPMid', paytm_mer_key='$txtPMkey', fcm_key='$txtGfcm', maintenance_mode='$txtMntnc', upi='$upi', upi_mc='$upi_mc', upi_tn='$upi_tn', upi_pn='$upi_pn', upi_token='$upi_token', wallet_mode='$txtWmode', min_withdraw='$txtMinWith', max_withdraw='$txtMaxWith', min_deposit='$txtMinDepo', max_deposit='$txtMaxDepo', mop='$txtMpayment', country_code='$txtCountryCode', share_prize='$txtSprize', download_prize='$txtDprize', bonus_used='$txtBonusUsed', tawkto_chat_link='$tawkto_chat_link' , bonus_on_recharge='$bonus_on_recharge' where id=1";
 	}
 
 	if ($conn->query($sql) === TRUE) {
@@ -489,6 +490,12 @@ if(isset($_POST['btnUpdate']))
 																			<option <?php if($result['maintenance_mode']==1) { echo 'selected'; } ?> value="1">On</option>
 																			<option <?php if($result['maintenance_mode']==0) { echo 'selected'; } ?> value="0">Off</option>
 																		</select>
+																	</div>
+																</div>
+																<div class="col-lg-3">
+																	<div class="form-group">
+																		<label>*Bonus Percent (%) on Recharge</label>
+																		<input type="text" name="bonus_on_recharge" class="form-control" required value="<?php echo $result['bonus_on_recharge']; ?>" />
 																	</div>
 																</div>
 																<div class="col-lg-12">
