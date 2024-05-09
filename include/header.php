@@ -148,7 +148,7 @@ $appDetRes = $appDetQuery->fetch_assoc();
                         <div class="col-md-9 col-sm-9">
                             <div class="header-right-link">
                                 <!-- search option end -->
-								<a class="s-menu" href="megalotto.apk" download>Download</a>
+								<a class="s-menu" href="numolo.apk" download>Download</a>
                             </div>
                             <!-- mainmenu start -->
                             <nav class="navbar navbar-default">

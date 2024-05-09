@@ -25,7 +25,7 @@
 								</div>
 								<!-- layer 3 -->
 								<div class="layer-3 wow fadeInUp" data-wow-delay="0.7s">
-									<a href="megalotto.apk" class="left-btn" download><img src="img/android_button.svg" alt="" width="200px" ></a>
+									<a href="numolo.apk" class="left-btn" download><img src="img/android_button.svg" alt="" width="200px" ></a>
 								</div>
 							</div>
 						</div>
