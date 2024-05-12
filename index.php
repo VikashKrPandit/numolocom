@@ -520,7 +520,7 @@
         <!-- End Footer Area -->
 		
         <div id="mybutton">
-            <a href="megalotto.apk" download class="feedback" title="Download"><img src="img/download.gif" width="300"></a>
+            <a href="numolo.apk" download class="feedback" title="Download"><img src="img/download.gif" width="300"></a>
         </div>
 
 		<!-- all js here -->

@@ -6,7 +6,7 @@
         $slContestFtch =$slContest->fetch_assoc();
         $slContestFtchId= $slContestFtch['id'];
         $cntst_fees_id=$slContestFtch['fee_id'];
-        $slParticipate = $conn->query("select user_id,win_prize from tbl_participants where contest_id='$slContestFtchId' and win_prize !=0");
+        $slParticipate = $conn->query("select user_id,win_prize from tbl_participants where fees_id='$slContestFtchId' and win_prize !=0");
         if(mysqli_num_rows($slParticipate)> 0){
             $cl=array();
             while($slParticipateftch = $slParticipate->fetch_assoc()){
