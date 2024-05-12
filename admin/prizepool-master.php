@@ -97,7 +97,7 @@ if(isset($_GET['fid']) && isset($_GET['did']))
 	$fid = $_GET['fid'];
 	$did = $_GET['did'];
 	
-	if($upQueryAccRes['livecontest']==0)
+	if($upQueryAccRes['livecontest'] >0)
   	{
 		$sql = "DELETE from prizepool_master where id=$did";
 
