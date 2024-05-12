@@ -4,7 +4,7 @@ include('include/security.php');
 $getContest = $conn->query("select * from tbl_contest where status=2");
 $getPkg = $conn->query("select * from tbl_packages where pkg_status!=2");
 
-$getFees = $conn->query("select f.*, p.pkg_name from fees_master as f left join tbl_packages as p on p.id=f.pkg_id order by f.id ASC");
+$getFees = $conn->query("select f.*, p.pkg_name from fees_master as f left join tbl_packages as p on p.id=f.pkg_id order by f.id DESC");
 
 if(isset($_POST['btnSave']))
 {
