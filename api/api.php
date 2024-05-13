@@ -114,6 +114,9 @@
 			$this->functions->getHistory();
 		}
 		
+		private function get_my_contests() {
+			$this->functions->getMyContests();
+		}
 		private function get_my_results() {
 			$this->functions->getMyResults();
 		}

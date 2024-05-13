@@ -25,8 +25,7 @@ if(isset($_POST['btnSave']))
 			$txtRank= htmlspecialchars(mysqli_real_escape_string($conn,$_POST['txtRank']), ENT_QUOTES, 'UTF-8');
 			$txtPrize= htmlspecialchars(mysqli_real_escape_string($conn,$_POST['txtPrize']), ENT_QUOTES, 'UTF-8');
 
-			$sql = "INSERT INTO prizepool_master (fees_id, rank, prize)
-			VALUES ($fid, $txtRank, $txtPrize)";
+			$sql = "INSERT INTO prizepool_master (fees_id, rank, prize) VALUES ($fid, $txtRank, $txtPrize)";
 
 			if ($conn->query($sql) === TRUE) {
 				flash( 'fmsg', 'fmsg', 'Record added successfully.', 'success', 'TRUE' );

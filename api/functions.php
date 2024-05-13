@@ -1320,13 +1320,22 @@
                 $flag = array();
                 $user_id = mysqli_real_escape_string($conn, $_GET['user_id']);
                 
-                $query = "SELECT from_unixtime(t1.start_time, '%h:%m:%s') AS time, from_unixtime(t1.start_time, '%d/%m/%Y') AS date, t2.contest_id 
+                /*$query = "SELECT from_unixtime(t1.start_time, '%h:%m:%s') AS time, from_unixtime(t1.start_time, '%d/%m/%Y') AS date, t2.contest_id 
                 FROM tbl_contest AS t1
                 LEFT JOIN tbl_participants AS t2 ON (t1.id = t2.contest_id) 
                 WHERE t1.status = '4' AND t2.user_id = '$user_id' 
                 GROUP BY t2.contest_id 
                 ORDER BY t2.contest_id DESC";
-        	    $result = mysqli_query($conn,$query);
+        	    $result = mysqli_query($conn,$query);*/
+
+                $query=  "SELECT t1.fees_id, t1.contest_id, t1.win_prize,t2.question, t3.pkg_name,from_unixtime(t4.start_time, '%h:%m:%s') AS time, from_unixtime(t4.start_time, '%d/%m/%Y') AS date
+                FROM tbl_participants t1
+                LEFT JOIN fees_master AS t2 ON (t2.id = t1.fees_id)
+                LEFT JOIN tbl_packages t3 ON (t3.id = t2.pkg_id)
+                 LEFT JOIN tbl_contest t4 ON (t4.id = t1.contest_id)
+                WHERE t4.status = 4 AND t1.user_id = '$user_id' 
+                GROUP BY t1.id ORDER BY t1.id DESC";
+                $result = mysqli_query($conn,$query);
         
                 if($result){
                 	while($row=mysqli_fetch_array($result)){
@@ -1339,6 +1348,57 @@
             mysqli_close($conn);
     	}
     	
+        public function getMyContests() {
+    		include "../admin/include/conn.php";
+    
+            if(!isset($_GET['access_key']) || $pur_code != $_GET['access_key']){
+        		$set['result'][]=array('msg' => "Invalid Access Key", 'success'=>'0');
+    			echo $val= str_replace('\\/', '/', json_encode($set, JSON_UNESCAPED_UNICODE));
+            }
+            else {
+                $flag = array();
+                
+                $user_id = mysqli_real_escape_string($conn, $_GET['user_id']);
+                $contest_id = mysqli_real_escape_string($conn, $_GET["contest_id"]);
+                
+                // $query = "SELECT t1.id, t1.price, t1.no_of_winners, t1.no_of_tickets, COUNT(CASE WHEN t2.user_id = '$user_id' THEN t2.id END) AS no_of_bought, from_unixtime(t2.date_created, '%d/%m/%Y') AS date, 
+                // (SELECT SUM(t3.prize) FROM prizepool_master as t3 WHERE t3.fees_id = t1.id) AS total_prize,
+                // (SELECT COUNT(t4.id) FROM tbl_participants as t4 WHERE t4.contest_id = '$contest_id' AND t4.fees_id = t1.id AND t4.status = '0') AS no_of_sold,
+                // t5.status, t6.pkg_name
+                // FROM fees_master AS t1 
+                // LEFT JOIN tbl_participants AS t2 on (t1.id = t2.fees_id AND t2.status = 0) 
+                // LEFT JOIN tbl_contest AS t5 on (t2.contest_id = t5.id)
+                // LEFT JOIN tbl_packages t6 ON (t1.pkg_id = t6.id)
+                // WHERE t2.contest_id = '$contest_id' AND t2.user_id = '$user_id'
+                // GROUP BY t1.id 
+                // ORDER BY t1.price ASC";
+                
+                
+                $query ="SELECT t1.id, t1.price, t1.no_of_winners, t1.no_of_tickets, COUNT(CASE WHEN t2.user_id ='$user_id' THEN t2.id END) AS no_of_bought, from_unixtime(t2.date_created, '%d/%m/%Y') AS date, 
+                (SELECT SUM(t3.prize) FROM prizepool_master as t3 WHERE t3.fees_id = t1.id) AS total_prize,
+                (SELECT COUNT(t4.id) FROM tbl_participants as t4 WHERE t4.user_id = '766' AND t4.fees_id = t1.id AND t4.status = '0') AS no_of_sold,
+                t5.status, t6.pkg_name
+                FROM fees_master AS t1 
+                LEFT JOIN tbl_participants AS t2 on (t1.id = t2.fees_id AND t2.status = 0) 
+                LEFT JOIN tbl_contest AS t5 on (t2.contest_id = t5.id)
+                LEFT JOIN tbl_packages AS t6 ON (t1.pkg_id = t6.id)
+                WHERE t2.user_id ='$user_id' 
+                GROUP BY t1.id 
+                ORDER BY t1.price DESC";
+                
+        	    $result = mysqli_query($conn,$query);
+        
+                if($result){
+                	while($row=mysqli_fetch_array($result)){
+                        $flag[]=$row;
+                    }
+            	    header( 'Content-Type: application/json; charset=utf-8' );
+                    print(json_encode($flag));
+                }
+            }
+            
+            mysqli_close($conn);
+    	}
         
     	public function getMyResults() {
     		include "../admin/include/conn.php";
