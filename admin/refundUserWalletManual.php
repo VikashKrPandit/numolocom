@@ -5,12 +5,13 @@ if(isset($_GET['fee_id'])){
     //die();
     include('include/security.php');
 
-    $slContest = $conn->query("select tc.id AS contstId,tc.fee_id,tc.status,fm.id,fm.answer_key from tbl_contest as tc LEFT JOIN  fees_master as fm ON tc.fee_id=fm.id WHERE tc.status=4 and fm.id='$fee_id' AND fm.answer_key IS NULl order by tc.id desc LIMIT 1");
+    $slContest = $conn->query("select tc.id AS contstId,tc.fee_id,tc.status,fm.id,fm.answer_key from tbl_contest as tc LEFT JOIN  fees_master as fm ON tc.fee_id=fm.id WHERE tc.status=4 and fm.id='$fee_id' AND fm.answer_key IS NOT NULl order by tc.id desc LIMIT 1");
     if(mysqli_num_rows($slContest)>0){
 
         $slContestFtch =$slContest->fetch_assoc();
         $slContestFtchId= $slContestFtch['contstId'];
         $cntst_fees_id=$slContestFtch['fee_id'];
+        echo $slContestFtchId;
         $slParticipate = $conn->query("select user_id,win_prize,entry_fee from tbl_participants where contest_id='$slContestFtchId' and entry_fee !=0");
         if(mysqli_num_rows($slParticipate)> 0){
             $cl=array();
@@ -18,12 +19,13 @@ if(isset($_GET['fee_id'])){
                 $cl[]=$slParticipateftch;
                 $user_id = $slParticipateftch['user_id'];
                 $entry_fee = $slParticipateftch['entry_fee'];
+                echo $user_id;
                 $userFtch = $conn->query("select cur_balance from tbl_user where id='$user_id' and is_dummy!=1");
                 $c =mysqli_num_rows($userFtch);
 
             }
             foreach($cl as $key=> $vl){
-                //print_r($vl);
+                print_r($vl);
                 //die();
               $id=$vl['user_id'];
               $query = $conn->query("select id,cur_balance, won_balance from tbl_user where id=$id and is_dummy!=1");
